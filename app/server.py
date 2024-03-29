@@ -12,10 +12,10 @@ def main():
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind((HOST, PORT))
-        s.listen(10)
+        s.listen(1)
         conn, addr = s.accept()
         with conn:
-            print(f"Conexão estabelecida por {addr}")
+            print(f"{addr}")
             while True:
                 opcao_bytes = conn.recv(1024)
                 opcao = opcao_bytes.decode().strip()
@@ -27,10 +27,10 @@ def main():
                     resultado = calcular_fatorial(num)
                     conn.sendall(str(resultado).encode())
                 elif opcao == '5':
-                    print('Conexão encerrada.')
+                    print('bye.')
                     break
                 else:
-                    conn.sendall("Opção inválida.".encode())
+                    conn.sendall("invel.".encode())
 
 if __name__ == "__main__":
     main()
