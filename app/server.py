@@ -27,27 +27,45 @@ def main():
         with conn:
             print(f"Conexão estabelecida por {addr}")
             while True:
-                data = conn.recv(1024)
-                if not data:
+                opcao_bytes = conn.recv(1024)
+                opcao = opcao_bytes.decode().strip()
+                print("Opção recebida no servidor:", opcao)
+                if not opcao:
                     break
-                opcao, *valores = data.decode().strip().split(',')
                 if opcao == '1':
-                    num = int(valores[0])
+                    conn.sendall("Digite o número para calcular o fatorial: ".encode())
+                    num_bytes = conn.recv(1024)
+                    num = int(num_bytes.decode().strip())
                     print("Número recebido no servidor para fatorial:", num)
                     resultado = calcular_fatorial(num)
                     conn.sendall(str(resultado).encode())
                 elif opcao == '2':
-                    n, k = map(int, valores)
+                    conn.sendall("Digite o valor de n para calcular a combinação: ".encode())
+                    n_bytes = conn.recv(1024)
+                    n = int(n_bytes.decode().strip())
+                    conn.sendall("Digite o valor de k para calcular a combinação: ".encode())
+                    k_bytes = conn.recv(1024)
+                    k = int(k_bytes.decode().strip())
                     print("Valores recebidos no servidor para combinação:", n, k)
                     resultado = calcular_combinacao(n, k)
                     conn.sendall(str(resultado).encode())
                 elif opcao == '3':
-                    n, k = map(int, valores)
+                    conn.sendall("Digite o valor de n para calcular a permutação: ".encode())
+                    n_bytes = conn.recv(1024)
+                    n = int(n_bytes.decode().strip())
+                    conn.sendall("Digite o valor de k para calcular a permutação: ".encode())
+                    k_bytes = conn.recv(1024)
+                    k = int(k_bytes.decode().strip())
                     print("Valores recebidos no servidor para permutação:", n, k)
                     resultado = calcular_permutacao(n, k)
                     conn.sendall(str(resultado).encode())
                 elif opcao == '4':
-                    n, k = map(int, valores)
+                    conn.sendall("Digite o valor de n para calcular o arranjo: ".encode())
+                    n_bytes = conn.recv(1024)
+                    n = int(n_bytes.decode().strip())
+                    conn.sendall("Digite o valor de k para calcular o arranjo: ".encode())
+                    k_bytes = conn.recv(1024)
+                    k = int(k_bytes.decode().strip())
                     print("Valores recebidos no servidor para arranjo:", n, k)
                     resultado = calcular_arranjo(n, k)
                     conn.sendall(str(resultado).encode())
