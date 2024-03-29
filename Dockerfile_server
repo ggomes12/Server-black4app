@@ -3,8 +3,8 @@ FROM python:3.10.12
 
 WORKDIR /app
 
-COPY . . 
+COPY . .
 
-RUN pip install socket
+EXPOSE 80
 
 CMD ["python", "app/TCPServer.py"]
