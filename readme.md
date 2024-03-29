@@ -30,22 +30,22 @@ Make sure you have the following tools installed on your machine:
 
 2. Build the server and client images:
     ```bash
-    docker build -t tcp-server -f Dockerfile.server .
-    docker build -t tcp-client -f Dockerfile.client .
+    $ docker build -t tcp-server -f Dockerfile.server .
+    $ docker build -t tcp-client -f Dockerfile.client .
     ```
 
 ## Running the Server
 
 1. Run the server container:
     ```bash
-    docker run --network="host" -e SERVER_PORT=9000 tcp-server
+    $ docker run --network="host" -e SERVER_PORT=9000 tcp-server
     ```
 
 ## Running the Client
 
 1. Run the client container, replacing `SERVER_IP` with the server's IP and `SERVER_PORT` with the server's port:
     ```bash
-    docker run --network="host" -e SERVER_IP=127.0.0.1 -e SERVER_PORT=9000 -it tcp-client
+    $ docker run --network="host" -e SERVER_IP=127.0.0.1 -e SERVER_PORT=9000 -it tcp-client
     ```
 
 ## Interacting with the Operations
