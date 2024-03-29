@@ -15,8 +15,8 @@ def calcular_arranjo(n, k):
     return calcular_permutacao(n, k)
 
 def main():
-    HOST = '127.0.0.1'
-    PORT = 9000
+    HOST = '0.0.0.0'
+    PORT = 80
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind((HOST, PORT))

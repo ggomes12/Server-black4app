@@ -1,9 +1,11 @@
 # image
-FROM python:3.10.12
+FROM python:3
 
 WORKDIR /app
 
-COPY . . 
+COPY . .
+
+EXPOSE 80
 
 
 CMD ["python", "app/TCPServer.py"]
