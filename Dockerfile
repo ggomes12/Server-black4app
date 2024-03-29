@@ -1,8 +1,9 @@
 FROM python:3.9-slim
 
+COPY app/server.py /app/
+
 WORKDIR /app
 
-COPY app/server.py /app/
 
 EXPOSE 80
 
