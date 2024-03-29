@@ -16,7 +16,7 @@ def calcular_arranjo(n, k):
 
 def main():
     HOST = '0.0.0.0'
-    PORT = 80
+    PORT = 8080
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind((HOST, PORT))
