@@ -1,8 +1,8 @@
 FROM python:3.9-slim
 
-WORKDIR /app
+WORKDIR .
 
-COPY server.py /app/
+COPY . .
 
 EXPOSE 8080
 
