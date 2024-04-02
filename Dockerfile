@@ -1,10 +1,14 @@
 FROM python:3.9-slim
 
-WORKDIR /Server-black4app
+WORKDIR /app
 
-COPY . . 
+COPY . .
 
-EXPOSE 8080
-ENV PORT 8080
+RUN pip install Flask
 
-CMD ["python", "./server.py"]
+ENV FLASK_APP=app.py
+
+
+EXPOSE 5000
+
+CMD ["flask", "run", "--host=0.0.0.0"]
