@@ -2,11 +2,11 @@ FROM python:3.9-slim
 
 WORKDIR /app
 
-COPY . .
+COPY server.py /app
 
 RUN pip install Flask
 
-ENV FLASK_APP=app.py
+ENV FLASK_APP=server.py
 
 
 EXPOSE 5000
